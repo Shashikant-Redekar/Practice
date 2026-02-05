@@ -21,31 +21,38 @@
 // 1 <= k <= number of distinct elements in nums.
 
 class Solution {
-    public int[] topKFrequent(int[] nums, int k) {
-        HashSet<Integer> n = new HashSet();
-        LinkedHashSet<Integer> out = new LinkedHashSet<>();
-        if(nums.length <= 2){
-            int[] output = new int[k];
-            for(int i=0; i<k; i++){
-                output[i] = nums[i];
+    public int[] topKFrequent(int[] num, int k) {
+        HashMap<Integer,Integer> n = new HashMap<>();
+        for( int i: num){
+            if(n.containsKey(i)){
+                n.put(i, n.get(i)+1);
+            }else{
+                n.put(i,1);
             }
-            return  output;
-        }else{
-            for (int i : nums) {
-                if (!n.add(i)) {
-                    if (out.size() < k) {
-                        out.add(i);
-                    } else {
-                        break;
-                    }
-                }   
-            }
-            while(out.size() < k){
-            int[] n1 = n.stream().mapToInt(Integer::intValue).toArray();
-            out.add(n1[out.size()]);
-            }
-            int[] output = out.stream().mapToInt(Integer::intValue).toArray();
-            return output;
         }
+        n = n.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(
+                        LinkedHashMap::new,
+                        (m, e) -> m.put(e.getKey(), e.getValue()),
+                        LinkedHashMap::putAll
+                );
+        List<Integer> result = new ArrayList<>();
+
+        for(Map.Entry<Integer,Integer> en: n.entrySet()){
+            if(en.getValue() > 1 && result.size() < k)
+                result.add(en.getKey());
+        }
+        for(Map.Entry<Integer,Integer> en: n.entrySet()){
+            if(en.getValue() == 1 && result.size() < k)
+                result.add(en.getKey());
+        }
+        
+        int[] nk = new int[k];
+        for(int i = 0; i< result.size(); i++){
+            nk[i] = result.get(i);
+        }
+        return nk;
     }
 }
