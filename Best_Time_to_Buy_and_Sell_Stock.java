@@ -45,3 +45,19 @@ class Solution {
       return (Math.max(prevResult,result));
     }
 }
+
+// new solution 
+
+        int minPrice = prices[0];
+        int maxProfit = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < minPrice) {
+                minPrice = prices[i];  // better day to buy
+            } else {
+                int profit = prices[i] - minPrice;
+                maxProfit = Math.max(maxProfit, profit);
+            }
+        }
+
+        return maxProfit;
