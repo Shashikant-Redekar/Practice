@@ -40,6 +40,27 @@ class Solution {
     }
 }
 
+// BUBBLE SORT WITH RECURSION
+
+class Solution {
+    void sort(int[] arr, int n) {
+        if (n == 1) return;
+        int swap = 0;
+        for(int j = 0; j < n -1; j++){
+            if(arr[j] > arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                System.out.println("run");
+                swap = 1;
+            }
+            System.out.println("RUN");
+        }
+        if(swap == 0) return;
+        sort(arr, n-1);
+    }
+}
+
 // INSERSION SORT
 
 class Solution {
