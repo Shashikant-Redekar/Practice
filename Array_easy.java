@@ -44,3 +44,20 @@ class Solution {
             System.out.println("Not Sorted");
     }
 }
+
+//Left rotate array by 1
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class Solution {
+    void isSorted(int[] arr) {
+        int temp = arr[0];
+        for(int i = 1; i < arr.length; i++) {
+            arr[i-1] = arr[i];
+        }
+        arr[arr.length -1] = temp;
+        for(int i: arr){
+            System.out.println(i);
+        }
+    }
+}
