@@ -27,3 +27,20 @@ class Solution {
         System.out.println(smax);
     }
 }
+
+//Check if an array is sorted
+
+class Solution {
+    void isSorted(int[] arr) {
+        boolean sorted = true;
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i-1] > arr[i]){
+                sorted = false;
+            }
+        }
+        if(sorted)
+            System.out.println("Sorted");
+        else
+            System.out.println("Not Sorted");
+    }
+}
