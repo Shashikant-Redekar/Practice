@@ -96,3 +96,55 @@ class Solution {
         sort(arr,n,i+1);
     }
 }
+
+//MERGE SORT
+import java.util.ArrayList;
+import java.util.List;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class Solution {
+    void mergeSort (int[] arr,int low,int high){
+        if(low >= high) return;
+        int mid = (low + high)/2;
+        mergeSort(arr,low,mid);
+        mergeSort(arr,mid+1,high);
+        merge(arr,low,mid,high);
+    }
+    void merge (int[] arr, int low, int mid, int high){
+        int left = low;
+        int right = mid+1;
+        List<Integer> temp= new ArrayList<>();
+
+        while (left <= mid && right <= high){
+            if (arr[left] <= arr[right]){
+                temp.add(arr[left++]);
+            } else {
+                temp.add(arr[right++]);
+            }
+        }
+        while(left <= mid ){
+            temp.add(arr[left++]);
+        }
+        while (right <= high){
+            temp.add(arr[right++]);
+        }
+        for (int i = low; i <= high; i++){
+            arr[i] = temp.get(i - low);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Solution s = new Solution();
+
+        int[] arr = new int[]{1,7,5,6,4,3,2,9,8};
+        int[] arr1 = new int[]{1,2,3,4,5,6,7};
+        s.mergeSort(arr,0,arr.length-1);
+        for( int i: arr){
+            System.out.println(i);
+        }
+    }
+}
+
