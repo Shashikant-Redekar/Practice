@@ -82,4 +82,20 @@ class Solution {
         nums = reverseArray(nums,0,k-1);
         nums = reverseArray(nums,0,n-1);
     }
+
+  //move zeros to right
+  class Solution{
+    public void moveZeroes(int[] nums) {
+        int count = 1;
+        for(int i = 1; i< nums.length; i++){
+            if(nums[i-1] == 0 && nums[i] != 0){
+                nums[i - count] = nums[i];
+                nums[i] = 0;
+            } else if (nums[i-1] == 0 && nums[i] == 0){
+                count++;
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+}
 }
