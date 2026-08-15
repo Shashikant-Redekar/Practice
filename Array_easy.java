@@ -61,3 +61,25 @@ class Solution {
         }
     }
 }
+
+//Left rotate by k 
+
+class Solution {
+        int[] reverseArray(int[] nums,int start,int end){
+          while(start < end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+          }
+          return nums;
+        }
+    public void rotateArray(int[] nums, int k) {
+        int n = nums.length;
+        k = k%n;
+        nums = reverseArray(nums,k,n-1);
+        nums = reverseArray(nums,0,k-1);
+        nums = reverseArray(nums,0,n-1);
+    }
+}
