@@ -140,3 +140,29 @@ class Solution{
         System.out.println(union);
     }
 }
+
+//Max consecutive ones
+class Solution{
+    public void maxones(int[] arr1) {
+        int count = 0;
+        int max = 0;
+        if(arr1[0] == 1){
+            count = 1;
+            max = 1;
+        }
+        for(int i = 1; i < arr1.length; i++){
+            if (arr1[i] == 1){
+                count++;
+                if(max < count){
+                    max = count;
+                }
+            }else{
+                if(max < count){
+                    max = count;
+                }
+                count = 0;
+            }
+        }
+        System.out.println(max);
+    }
+}
