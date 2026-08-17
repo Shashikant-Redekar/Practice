@@ -177,3 +177,19 @@ class Solution {
         return ans;
     }
 }
+
+//Remove duplicates from an array
+class Solution {
+    public int removeDuplicates(int[] arr1) {
+                int i = 0;
+        for (int j = 1; j < arr1.length; j++) {
+            if (arr1[i] != arr1[j]) {
+                i++;
+                int temp = arr1[i];
+                arr1[i] = arr1[j];
+                arr1[j] = temp;
+            }
+        }
+        return i+1;
+    }
+}
