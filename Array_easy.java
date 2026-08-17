@@ -166,3 +166,14 @@ class Solution{
         System.out.println(max);
     }
 }
+
+//Single numbers in an array
+class Solution {
+    public int singleNumber(int[] arr1) {
+        int ans = 0;
+        for (int i : arr1){
+            ans ^= i;
+        }
+        return ans;
+    }
+}
