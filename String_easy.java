@@ -79,3 +79,19 @@ class Solution {
                     return false;
     }
 }
+
+//Rotation String 2 Solution
+class Solution {
+    public boolean rotateString(String a, String b) {
+                int s = a.length();
+        int t = b.length();
+        if (s != t){
+            return false;
+        }
+        String str = a + a;
+        if(str.contains(b)){
+            return true;
+        }
+        return false;
+    }
+}
