@@ -60,3 +60,22 @@ class Solution {
         return true;
     }
 }
+
+//Rotation Stirng 1 solution 
+class Solution {
+    public boolean rotateString(String a, String b) {
+                int s = a.length();
+        int t = b.length();
+        if (s != t){
+            return false;
+        }
+        for(int i = 0; i < a.length(); i++){
+            if(a.charAt(i) == b.charAt(0)){
+                if((a.substring(i) + a.substring(0,i)).equals(b)){
+                    return true;
+                }
+            }
+        }
+                    return false;
+    }
+}
