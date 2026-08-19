@@ -170,3 +170,25 @@ class Solution {
         return str.toString();
     }
 }
+
+//remove outermost paranthesis
+class Solution {
+    public String removeOuterParentheses(String a) {
+                StringBuffer str = new StringBuffer();
+        int ref = 0;
+        for(int i = 0; i < a.length(); i++){
+            if(a.charAt(i) == '(' && ref == 0){
+                ref++;
+            }else if (a.charAt(i) == '('){
+                str.append(a.charAt(i));
+                ref++;
+            }else if (a.charAt(i) == ')' && ref != 1){
+                str.append(a.charAt(i));
+                ref--;
+            } else if (a.charAt(i) == ')' && ref == 1){
+                ref--;
+            }
+        }
+        return str.toString();
+    }
+}
