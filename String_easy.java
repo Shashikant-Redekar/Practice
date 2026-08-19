@@ -139,3 +139,34 @@ class Solution {
         return true;
     }
 }
+
+//Reverse a String 
+class Solution {
+    public String reverseWords(String a) {
+                if(a.equals(' '))
+            System.out.println(' ');
+                    a = a.strip();  //sanitization
+        a = a.replaceAll("\\s+", " ");
+        StringBuffer str = new StringBuffer();
+        int ref = 0;
+        for(int i = a.length()-1; i>=0; i--){
+            if((a.charAt(i) == ' ' && ref == 0)|| (i == 0 && ref == 0)){
+                if(i != 0) {
+                    str.append(a.substring(i+1));
+                }else{
+                    str.append(a.substring(i));
+                }
+                ref = i;
+            }else if (a.charAt(i) == ' ' || i == 0){
+                if(i != 0) {
+                    str.append(a.substring(i, ref));
+                }else{
+                    str.append(' ');
+                    str.append(a.substring(i, ref));
+                }
+                ref = i;
+            }
+        }
+        return str.toString();
+    }
+}
