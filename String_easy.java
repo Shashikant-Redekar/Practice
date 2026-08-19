@@ -95,3 +95,25 @@ class Solution {
         return false;
     }
 }
+
+//Valid Anagram 1
+class Solution {
+    public boolean isAnagram(String a, String b) {
+         int s = a.length();
+        int t = b.length();
+        if (s != t){
+            return false;
+        }
+        char[] c = a.toCharArray();
+        char[] d = b.toCharArray();
+
+        Arrays.sort(c);
+        Arrays.sort(d);
+        for(int i = 0; i< s; i++){
+            if(c[i] != d[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
