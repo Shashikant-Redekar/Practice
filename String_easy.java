@@ -117,3 +117,25 @@ class Solution {
         return true;
     }
 }
+
+//Valid Anagram 2
+class Solution {
+    public boolean isAnagram(String a, String b) {
+         int s = a.length();
+        int t = b.length();
+        if (s != t){
+            return false;
+        }
+        int[] index = new int[26];
+        for(int i = 0; i < s; i++){
+            index[a.charAt(i) - 'a']++;
+            index[b.charAt(i) - 'a']--;
+        }
+        for(int i = 0; i< 26; i++){
+            if(index[i] != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+}
