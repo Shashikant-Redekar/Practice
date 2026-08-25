@@ -47,3 +47,22 @@ class Solution {
         }
     }
 }
+
+//Majority element in an array
+class Solution {
+    public int majorityElement(int[] a) {
+                int count = 1;
+        int element = a[0];
+        for(int i = 1; i < a.length; i++){
+            if(count == 0){
+                element = a[i];
+                count++;
+            } else if(a[i] == element){
+                count++;
+            } else if(a[i] != element){
+                count --;
+            }
+        }
+        return element;
+    }
+}
